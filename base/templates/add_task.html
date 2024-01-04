@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form method="POST" autocomplete="off">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Title</label>
+        <input type="text" class="form-control" name="title" value="{{form.title}}" id="exampleFormControlInput1" placeholder="name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Description</label>
+        <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="3">{{form.desc}}</textarea>
+    </div>
+
+    <div class="form-check form-check-inline">
+
+        {% if form.complete %}
+        <input class="form-check-input" type="checkbox" name="complete"  id="inlineCheckbox1" checked>
+        {% else %}
+        <input class="form-check-input" type="checkbox" name="complete"  id="inlineCheckbox1">
+        {% endif %}
+
+        <label class="form-check-label" for="inlineCheckbox1">Completed ?</label>
+      </div>
+
+      <br>
+      <br>
+
+
+    
+
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+
+
+
+{% endblock content %}
